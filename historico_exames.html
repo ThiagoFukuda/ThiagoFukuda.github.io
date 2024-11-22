@@ -1,0 +1,32 @@
+<html></html>
+<head>
+    <title>Compartilhamento de exames</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="h-screen flex flex-col">
+                    <div className="bg-blue-700 text-white p-4 flex justify-between items-center">
+                        <span className="text-lg font-semibold">Compartilhamento de exames</span>
+                        <a href="resultados.html">
+                            <i className="fas fa-times text-white"></i>
+                        </a>
+                    </div>
+                    <div className="flex-grow flex items-center justify-center">
+                        <span className="text-gray-500">Não há nenhuma solicitação.</span>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+</body>
+</html>

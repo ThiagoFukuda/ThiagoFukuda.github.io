@@ -1,0 +1,137 @@
+<html></html>
+<head>
+    <title>Exames</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            const [selectedTab, setSelectedTab] = React.useState('Agendado');
+
+const renderContent = () => {
+    switch (selectedTab) {
+        case 'Agendado':
+            return <p className="text-gray-600 mb-4">Você ainda não possui exames ou vacinas agendados.</p>;
+        case 'Cancelado':
+            return <p className="text-gray-600 mb-4">Você ainda não possui exames ou vacinas cancelados.</p>;
+        case 'Ausente':
+            return <p className="text-gray-600 mb-4">Você ainda não possui exames ou vacinas ausentes.</p>;
+        case 'Realizado':
+            return <p className="text-gray-600 mb-4">Você ainda não possui exames ou vacinas realizados.</p>;
+        default:
+            return null;
+    }
+};
+            return (
+
+                <div className="flex h-screen">
+                    <aside className="w-1/5 bg-gray-100 p-4 border-r border-gray-200">
+                        <div className="flex items-center mb-8">
+                            <a href="usuario.html" className="flex items-center">
+                                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <i className="fas fa-user text-2xl text-gray-600"></i>
+                                </div>
+                                <div className="ml-4">
+                                    <p className="font-bold text-lg">Usuário</p>
+                                </div>
+                            </a>
+                        </div>
+                        <nav>
+                            <ul>
+                                <li className="mb-4">
+                                    <a href="meu_exame.html" className="flex items-center text-gray-600">
+                                        <i className="fas fa-home mr-2"></i>
+                                        Início
+                                    </a>
+                                </li>
+                                <li className="mb-4">
+                                    <a href="meu_resultado.html" className="flex items-center text-gray-600">
+                                        <i className="fas fa-file-alt mr-2"></i>
+                                        Resultados
+                                    </a>
+                                </li>
+                                <li className="mb-4">
+                                    <a href="meu_agendamento.html" className="flex items-center text-blue-600">
+                                        <i className="fas fa-calendar-check mr-2"></i>
+                                        Meus agendamentos
+                                    </a>
+                                </li>
+                                <li className="mb-4">
+                                    <a href="agendar.html" className="flex items-center text-gray-600">
+                                        <i className="fas fa-calendar-plus mr-2"></i>
+                                        Agendar exame
+                                    </a>
+                                </li>
+                                <li className="mt-8">
+                                    <a href="0home.html" className="flex items-center text-gray-600">
+                                        <i className="fas fa-sign-out-alt mr-2"></i>
+                                        Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <main className="flex-1 p-6 bg-white">
+                        <header className="flex justify-between items-center mb-8">
+                            <div className="flex items-center">
+                                <img src="logo.jpg" alt="Logo" className="w-12 h-12 mr-4"/>
+                                <div>
+                                    <p className="text-sm text-gray-500">+APOIO</p>
+                                    <p className="text-sm text-gray-500">SUA SAÚDE NOSSO FOCO</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center">
+                                <a href="mensagem.html" className="mr-4">
+                                    <i className="fas fa-comment-alt text-gray-600 text-xl"></i>
+                                </a>
+                                <a href="notificacao.html" className="mr-4">
+                                    <i className="fas fa-bell text-gray-600 text-xl"></i>
+                                </a>
+                                <a href="configuracao.html">
+                                    <i className="fas fa-cog text-gray-600 text-xl"></i>
+                                </a>
+                            </div>
+                        </header>
+                        <section>
+                            <h2 className="text-2xl font-bold mb-2">Meus agendamentos</h2>
+                            <p className="text-gray-600 mb-4">Veja aqui todos os seus agendamentos de exames e vacinas</p>
+                            <div className="border-b mb-4">
+                                <ul className="flex space-x-8">
+                                    {['Agendado', 'Cancelado', 'Ausente', 'Realizado'].map(tab => (
+                                        <li
+                                            key={tab}
+                                            className={`pb-2 cursor-pointer ${selectedTab === tab ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-600'}`}
+                                            onClick={() => setSelectedTab(tab)}
+                                        >
+                                            {tab}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="text-center">
+                                {renderContent()}
+                                <a href="agendar.html" className="bg-blue-600 text-white px-4 py-2 rounded">Agendar <i className="fas fa-arrow-right"></i></a>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
